@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Burn It Derby</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Bungee&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="scorebox">
+    <div><div class="k">Round</div><div class="v" id="round">1</div></div>
+    <div><div class="k">Dice up</div><div class="v dice" id="diceup">0</div></div>
+    <div><div class="k">Finish</div><div class="v" id="finishv" style="font-size:22px">50</div></div>
+  </div>
+  <div class="topicwrap">
+    <div id="topic" title="Click to show the topic full screen">The greatest invention is ___ because ___.</div>
+  </div>
+  <div class="hdrbtns">
+    <button class="hbtn" id="music">Music: off</button>
+    <button class="hbtn" id="sfx">Sound: on</button>
+    <button class="hbtn" id="fsBtn">Full screen</button>
+    <div class="gcount" style="grid-column:span 2; justify-content:space-between"><button id="gminus" aria-label="Remove a group">&minus;</button><span id="gcountv">6 groups</span><button id="gplus" aria-label="Add a group">+</button></div>
+    <button class="hbtn" id="settingsBtn">Settings</button>
+  </div>
+</header>
+
+<div id="stage">
+<main id="lanes"></main>
+<section id="answers">
+  <div class="gcards" id="gcards"></div>
+  <div class="bigboard" id="bigboard"></div>
+  <button id="what" title="Can't hear them? (Alt+W)">WHAT!?</button>
+</section>
+</div>
+
+<footer>
+  <div class="panel">
+    <h3>Log an answer</h3>
+    <div class="gpick" id="gpick"></div>
+    <form class="entry" id="entry" autocomplete="off">
+      <input id="item" placeholder="Item (microwave)">
+      <input id="reason" placeholder="Why? (it makes food quick)">
+      <button class="logbtn" type="submit">Log</button>
+    </form>
+    <div id="verdict">Pick a group, type the item and the reason, press Enter.</div>
+  </div>
+  <div class="panel board">
+    <h3>Burn board <span style="font-family:Archivo;font-size:12px;color:#d9b98a">(same item is fine, same reason is burned; click a reason to change it)</span></h3>
+    <div class="burnboard" id="board"></div>
+  </div>
+  <div class="side">
+    <button id="roll">Roll!</button>
+    <button class="hbtn viewbtn" id="viewBtn">Show race</button>
+    <div class="small">
+      <button class="hbtn" id="undo">Undo</button>
+      <button class="hbtn" id="newtopic">Clear board</button>
+    </div>
+    <button class="hbtn" id="nextTopic">Next topic</button>
+    <div class="legend">
+      <span style="--dc:#fff"><i></i>d6 answer</span>
+      <span style="--dc:var(--gold)"><i></i>d10 new + new</span>
+      <span style="--dc:#5aa9ff"><i></i>d4 echo</span>
+      <span style="--dc:#2fae66"><i></i>d8 pit stop</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="card">
+    <h2>Race settings</h2>
+    <div class="row">Finish line (spaces)<input type="number" id="setFinish" min="10" max="200"></div>
+    <div class="row">Pit stop when this far behind the leader<input type="number" id="setPit" min="3" max="100"></div>
+    <div class="row">Max dice per group per round<input type="number" id="setCap" min="1" max="10"></div>
+    <div style="font-weight:600;margin-top:12px">Group names</div>
+    <div class="names" id="setNames"></div>
+        <div class="note">Lowering the finish line mid-race finishes any horse already past it. Everything saves in this browser automatically.</div>
+    <div class="acts">
+      <button class="danger" id="resetRace">Reset race</button>
+      <button class="primary" id="closeSet">Done</button>
+    </div>
+  </div>
+</div>
+<div class="flash" id="flash"></div>
+<div id="tpop">
+  <button class="tclose" id="tclose" aria-label="Close">&times;</button>
+  <div id="ttext" contenteditable="true" spellcheck="false"></div>
+  <div class="thint">Click the sentence to type your own.</div>
+  <div id="tclock"></div>
+  <div class="tbtns" id="tbtns">
+    <button data-s="30">30 sec</button><button data-s="60">1 min</button><button data-s="120">2 min</button>
+  </div>
+  <button class="tstop" id="tstop">Skip</button>
+</div>
+<div id="fsmsg"></div>
+
+<script src="topics.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
